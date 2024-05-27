@@ -208,8 +208,11 @@ public class DatabaseFederationProvider implements UserStorageProvider,
     @Override
     public Stream<UserModel> searchForUserStream(RealmModel realm, Map<String, String> params, Integer firstResult, Integer maxResults) {
         String search = params.get(UserModel.SEARCH);
-        TypedQuery<UserEntity> query = em.createNamedQuery("searchForUser", UserEntity.class);
-        query.setParameter("search", "%" + search.toLowerCase() + "%");
+        TypedQuery<UserEntity> query = em.createNamedQuery("getAllUsers", UserEntity.class);
+        if(!search.equals("*")){
+            query = em.createNamedQuery("searchForUser", UserEntity.class);
+            query.setParameter("search", "%" + search.toLowerCase() + "%");
+        }
         if (firstResult != null) {
             query.setFirstResult(firstResult);
         }
