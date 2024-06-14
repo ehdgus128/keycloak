@@ -8,5 +8,11 @@
     }, {
         "name" : "keycloak.v2",
         "types": [ "login" ]
+    }, {
+        "name" : "keycloak.v3",
+        "types": [ "login" ]
+    }, {
+        "name" : "keycloak.v4",
+        "types": [ "login" ]
     }]
 }
